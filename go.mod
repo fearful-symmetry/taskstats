@@ -1,4 +1,4 @@
-module github.com/mdlayher/taskstats
+module github.com/fearful-symmetry/taskstats
 
 go 1.18
 

@@ -6,9 +6,28 @@ package taskstats_test
 import (
 	"os"
 	"testing"
+	"time"
 
-	"github.com/mdlayher/taskstats"
+	"github.com/fearful-symmetry/taskstats"
 )
+
+func TestLinuxIO(t *testing.T) {
+	c, err := taskstats.New()
+	if err != nil {
+		t.Fatalf("failed to open client: %v", err)
+	}
+	defer c.Close()
+
+	count := 30
+	for i := 0; i < count; i++ {
+		stats, err := c.PID(662)
+		if err != nil {
+			t.Fatalf("failed to get stats :%s", err)
+		}
+		t.Logf("got %d/%d %d/%d", stats.ReadChar, stats.WriteChar, stats.ReadBytes, stats.WriteBytes)
+		time.Sleep(time.Second)
+	}
+}
 
 func TestLinuxClientIntegration(t *testing.T) {
 	c, err := taskstats.New()
