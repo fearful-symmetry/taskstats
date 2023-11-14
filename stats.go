@@ -29,4 +29,10 @@ type Stats struct {
 	FreePagesDelay      time.Duration
 	ThrashingDelayCount uint64
 	ThrashingDelay      time.Duration
+
+	ReadChar  uint64
+	WriteChar uint64
+
+	ReadBytes  uint64
+	WriteBytes uint64
 }

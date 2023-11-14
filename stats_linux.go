@@ -40,6 +40,10 @@ func parseStats(ts unix.Taskstats) (*Stats, error) {
 		FreePagesDelay:      nanoseconds(ts.Freepages_delay_total),
 		ThrashingDelayCount: ts.Thrashing_count,
 		ThrashingDelay:      nanoseconds(ts.Thrashing_delay_total),
+		ReadChar:            ts.Read_char,
+		WriteChar:           ts.Write_char,
+		ReadBytes:           ts.Read_bytes,
+		WriteBytes:          ts.Write_bytes,
 	}
 
 	return stats, nil
